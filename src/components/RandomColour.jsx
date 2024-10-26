@@ -27,13 +27,13 @@ export default function RandomColour() {
     enabled: !!randomColour,
   })
 
-  const { data: monochromeScheme} = useQuery({
+  const { data: monochromeScheme } = useQuery({
     queryKey: ['monochromeScheme', randomColour, { suspense: true }],
     queryFn: () => getMonochromeColourScheme(randomColour),
     enabled: !!randomColourContrast,
   })
 
-  const { data: monochromeDarkScheme} = useQuery({
+  const { data: monochromeDarkScheme } = useQuery({
     queryKey: ['monochromeDarkScheme', randomColour],
     queryFn: () => getMonochromeDarkColourScheme(randomColour),
     enabled: !!randomColourContrast,
@@ -79,25 +79,27 @@ export default function RandomColour() {
   if (error) return <div id="colour-scheme-error" >An error occurred: {error.message}</div>;
 
   return (
+    <>
+      <div id="colour-scheme-main">
+        <div id="colour-scheme-randomColour">
+          <p style={{ backgroundColor: `#${randomColour}`, color: randomColourContrast }}>#{randomColour.toUpperCase()}</p>
+          <button onClick={() => refetch()} aria-label="Get new random colour">&#8635;</button>
+        </div>
 
-    <div id="colour-scheme-main">
-      <div id="colour-scheme-randomColour">
-        <p style={{ backgroundColor: `#${randomColour}`, color: randomColourContrast }}>#{randomColour.toUpperCase()}</p>
-        <button onClick={() => refetch()} aria-label="Get new random colour">&#8635;</button>
+        <p id="colour-scheme-message">Tap a colour to copy the hex code</p>
+        
+        <div id="colour-scheme-blocks">
+          <ColourSchemeBlock mode={monochromeScheme} scheme='Monochrome' />
+          <ColourSchemeBlock mode={monochromeDarkScheme} scheme='Monochrome Dark' />
+          <ColourSchemeBlock mode={monochromeLightScheme} scheme='Monochrome Light' />
+          <ColourSchemeBlock mode={analogicScheme} scheme='Analogic' />
+          <ColourSchemeBlock mode={complementScheme} scheme='Complement' />
+          <ColourSchemeBlock mode={analogicComplementScheme} scheme='Analogic Complement' />
+          <ColourSchemeBlock mode={triadScheme} scheme='Triad' />
+          <ColourSchemeBlock mode={quadScheme} scheme='Quad' />
+        </div>
       </div>
-
-      <div id="colour-scheme-blocks">
-        <ColourSchemeBlock mode={monochromeScheme} scheme='Monochrome' />
-        <ColourSchemeBlock mode={monochromeDarkScheme} scheme='Monochrome Dark' />
-        <ColourSchemeBlock mode={monochromeLightScheme} scheme='Monochrome Light' />
-        <ColourSchemeBlock mode={analogicScheme} scheme='Analogic' />
-        <ColourSchemeBlock mode={complementScheme} scheme='Complement' />
-        <ColourSchemeBlock mode={analogicComplementScheme} scheme='Analogic Complement' />
-        <ColourSchemeBlock mode={triadScheme} scheme='Triad' />
-        <ColourSchemeBlock mode={quadScheme} scheme='Quad' />
-      </div>
-    </div>
-
+    </>
   );
 };
 
