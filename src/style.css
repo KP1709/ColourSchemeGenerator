@@ -67,6 +67,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 
     ul {
         list-style: none;
@@ -90,4 +91,10 @@ p {
 
 li:hover{
     cursor:copy;
+}
+
+.colour-scheme-action {
+    position: absolute;
+    right: 100%; 
+    color: #000;
 }
