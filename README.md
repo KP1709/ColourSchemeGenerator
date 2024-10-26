@@ -12,6 +12,7 @@ Having too many UseEffect hooks can make code buggy and difficult to manage. Add
 - Generates colour schemes based on a specific colour and displays them
 - Able to generate a new colour and update the colour schemes for that colour
 - Responsive design + basic Sass syntax implemented in plain CSS as now supported
+- Tap on colour to copy hex code for use
 
 ## 📚 Resources
 - React-query (TanStack) documentation - https://tanstack.com/query/latest/docs/framework/react/quick-start
