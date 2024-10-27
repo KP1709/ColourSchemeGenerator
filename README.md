@@ -25,6 +25,10 @@ Having too many UseEffect hooks can make code buggy and difficult to manage. Add
   - Getting the details about a specific colour
   - Getting the colours for the colour schemes with the random colour used
 
+## 🤖 AI assistance
+To implement the copy feature. I used v0 by Vercel to assist. The code returned was used as inspiration.  
+Copy to clipboard React - https://v0.dev/chat/l5cDHbt07cK
+
 ## ➕ Features to add
 - Suspense to show when each colour scheme is loading
 
